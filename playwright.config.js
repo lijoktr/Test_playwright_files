@@ -14,7 +14,9 @@ const config = ({
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    browserName : 'Chromium'
+    browserName : 'chromium',
+    //webkit for safari, firefox
+    headless : false
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
   },
 });

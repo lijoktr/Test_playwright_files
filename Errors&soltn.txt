@@ -1,0 +1,13 @@
+Error1: git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Soltn: 
+check if you already have an SSH key:
+If No SSH Key Exists → Generate One
+Add the SSH key to GitHub:
+Add SSH Key to the SSH Agent
+Test Your SSH Connection
+If you get "Permission denied (publickey)", try restarting SSH:
+Change Your Git Remote to SSH
+git remote set-url origin git@github.com:lijoktr/Test_playwright_files.git
+git push origin main
