@@ -14,17 +14,26 @@
             {
                 const context = await browser.newContext();
                 const page = await context.newPage();
+                const Uname = page.locator("input#username");
+
                 await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
                 console.log(await page.title());
-                await page.locator("input#username").fill("rahulshetty")
+                await Uname.fill("rahulshetty")
                 await page.locator("input.form-control").nth(1).fill("learning")
                 await page.locator('[name="signin"]').click()
 
-                await page.waitForTimeout(1000);
+                //await page.waitForTimeout(1000);
 
-                console.log(await page.locator('[style*="block"]').textContent());
-                
+                console.log(await page.locator('[style*="block"]').textContent());                
                 await expect(page.locator('[style*="block"]')).toContainText('Incorrect');
+
+                await Uname.fill("")
+                await Uname.fill("rahulshettyacademy")
+                await page.locator('[name="signin"]').click()
+                //Shoppage
+                console.log(await page.locator('div.card-body a').first().textContent());
+                console.log(await page.locator('div.card-body a').nth(1).textContent());
+
 
                 await page.waitForTimeout(3000);
             
