@@ -31,12 +31,25 @@ const { title } = require('process')
 
                 await Uname.fill("")
                 await Uname.fill("rahulshettyacademy")
-
+                
+                //admin or user radio button
                 await page.locator(".radiotextsty").last().click();
-                const dropdown = await page.locator("select.form-control")
-                dropdown.selectOption("Teacher")
                 //popup
                 await page.locator("#okayBtn").click();
+                //assert
+                expect(await page.locator(".radiotextsty").last().isChecked()).toBeTruthy();
+                //or
+                //await page.locator(".radiotextsty").last().toBeChecked();
+
+                await page.locator("#terms").click()
+                expect(await page.locator("#terms")).toBeChecked();
+                //select dropdown 
+                const dropdown = await page.locator("select.form-control")
+                dropdown.selectOption("Teacher")                    
+
+
+
+
                 //signin
                 await page.locator('[name="signin"]').click()
 
