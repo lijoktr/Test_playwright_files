@@ -42,13 +42,13 @@ const { title } = require('process')
                 //await page.locator(".radiotextsty").last().toBeChecked();
 
                 await page.locator("#terms").click()
-                expect(await page.locator("#terms")).toBeChecked();
+                await expect(page.locator("#terms")).toBeChecked();
                 //select dropdown 
                 const dropdown = await page.locator("select.form-control")
-                dropdown.selectOption("Teacher")                    
+                await dropdown.selectOption("Teacher")                    
 
-
-
+                //assert blinking text
+                await expect(page.locator("[href*=documents-request]")).toHaveAttribute("class",'blinkingText');
 
                 //signin
                 await page.locator('[name="signin"]').click()
