@@ -31,17 +31,28 @@ const { title } = require('process')
 
                 await Uname.fill("")
                 await Uname.fill("rahulshettyacademy")
+
+                await page.locator(".radiotextsty").last().click();
+                const dropdown = await page.locator("select.form-control")
+                dropdown.selectOption("Teacher")
+                //popup
+                await page.locator("#okayBtn").click();
+                //signin
                 await page.locator('[name="signin"]').click()
+
                 //Shoppage
                 /*console.log(await CardTitles.first().textContent());
                 console.log(await CardTitles.nth(1).textContent());
                 or
-                await page.waitForLoadState('networkidle');
+                await page.waitForLoadState('networkidle'); //not stable
                 or*/
                 await CardTitles.last().waitFor();
                 const Title = await CardTitles.allTextContents();
                 console.log(Title);
 
+
+                
+                //await page.pause();
                 await page.waitForTimeout(3000);
             
             })
