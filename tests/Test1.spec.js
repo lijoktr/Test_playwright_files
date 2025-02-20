@@ -1,4 +1,5 @@
     const {test, expect} = require('@playwright/test')
+const { title } = require('process')
 
     //test.only
     test('page test1 code', async ({page})=>
@@ -15,6 +16,7 @@
                 const context = await browser.newContext();
                 const page = await context.newPage();
                 const Uname = page.locator("input#username");
+                const CardTitles = page.locator('div.card-body a')
 
                 await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
                 console.log(await page.title());
@@ -31,9 +33,14 @@
                 await Uname.fill("rahulshettyacademy")
                 await page.locator('[name="signin"]').click()
                 //Shoppage
-                console.log(await page.locator('div.card-body a').first().textContent());
-                console.log(await page.locator('div.card-body a').nth(1).textContent());
-
+                /*console.log(await CardTitles.first().textContent());
+                console.log(await CardTitles.nth(1).textContent());
+                or
+                await page.waitForLoadState('networkidle');
+                or*/
+                await CardTitles.last().waitFor();
+                const Title = await CardTitles.allTextContents();
+                console.log(Title);
 
                 await page.waitForTimeout(3000);
             
